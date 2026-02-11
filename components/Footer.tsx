@@ -12,7 +12,7 @@ import {
 
 export default function Footer() {
 	return (
-		<footer className="bg-[#F5F5F7] text-gray-900 py-20 border-t border-black/10 relative z-50">
+		<footer className="bg-[#F5F5F7] text-gray-900 py-20 border-t border-black/10 relative z-40">
 			<div className="container mx-auto px-6">
 				<div className="grid md:grid-cols-4 gap-12 mb-16">
 					{/* Brand */}
