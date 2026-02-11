@@ -31,7 +31,7 @@ export const products: Product[] = [
     {
         id: 1,
         slug: "c1-001",
-        name: "AstoreaFix C1-001",
+        name: "Astorea Fix C1-001",
         category: "Adhesives",
         code: "C1-001",
         image: "/images/products/1.png",
@@ -43,7 +43,7 @@ export const products: Product[] = [
     {
         id: 2,
         slug: "c1t-101",
-        name: "AstoreaFix C1T-101",
+        name: "Astorea Fix C1T-101",
         category: "Adhesives",
         code: "C1T-101",
         image: "/images/products/2.png",
@@ -55,7 +55,7 @@ export const products: Product[] = [
     {
         id: 3,
         slug: "c2t-301",
-        name: "AstoreaFix C2T-301",
+        name: "Astorea Fix C2T-301",
         category: "Adhesives",
         code: "C2T-301",
         image: "/images/products/3.png",
@@ -68,7 +68,7 @@ export const products: Product[] = [
     {
         id: 4,
         slug: "c2te-501",
-        name: "AstoreaFix C2TE-501",
+        name: "Astorea Fix C2TE-501",
         category: "Adhesives",
         code: "C2TE-501",
         image: "/images/products/4.png",

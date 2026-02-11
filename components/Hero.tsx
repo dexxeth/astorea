@@ -99,30 +99,31 @@ export default function Hero() {
                     className="object-cover object-center"
                 />
                 {/* Darker, richer overlay for better contrast */}
-                <div className="absolute inset-0 bg-linear-to-b from-navy-900/40 via-navy-900/20 to-navy-900/90" />
+                <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/20 to-black/90" />
                 <div className="absolute inset-0 bg-black/20 mix-blend-multiply" />
+                <div className="absolute inset-0 backdrop-blur-xs" />
             </div>
 
             {/* Content */}
-            <div ref={contentRef} className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 mt-32 flex flex-col items-start text-left">
+            <div ref={contentRef} className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 mt-16 md:mt-32 flex flex-col items-center md:items-start md:text-left text-center">
 
                 {/* Tagline: Glassmorphism & Wide Spacing */}
                 <div
                     ref={taglineRef}
-                    className="mb-8 inline-block px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
+                    className="inline-block px-4 py-2 my-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
                 >
-                    <h2 className="text-brand-orange text-xs md:text-sm font-bold tracking-[0.2em] uppercase">
-                        The Gold Standard
+                    <h2 className="text-white text-xs md:text-sm font-bold tracking-[0.2em] uppercase">
+                        The <span className="text-yellow-500">Gold</span> Standard
                     </h2>
                 </div>
 
                 {/* Main Heading: Bold, Tight, Authoritative */}
                 <h1
                     ref={titleRef}
-                    className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter mb-8 leading-[0.9] drop-shadow-lg"
+                    className="text-5xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter mb-8 leading-[0.9] drop-shadow-lg"
                 >
                     Constructing <br />
-                    <span className="bg-clip-text text-transparent bg-linear-to-b from-white to-white/70">
+                    <span>
                         Homes <br className="md:hidden" /> with Pride
                     </span>
                 </h1>
@@ -130,7 +131,7 @@ export default function Hero() {
                 {/* Description: Clean & Legible */}
                 <p
                     ref={descRef}
-                    className="text-lg md:text-xl text-gray-200 font-light max-w-2xl mb-12 leading-relaxed tracking-wide mix-blend-screen"
+                    className="text-lg md:text-xl text-gray-200 max-w-2xl mb-12 leading-relaxed tracking-wide mix-blend-screen"
                 >
                     Premium adhesives, grouts, and epoxy tailored for industrial luxury.
                     Engineered for strength, designed for perfection.

@@ -102,9 +102,9 @@ export default function GroutPicker() {
                         </div>
                     </div>
 
-                    <button className="px-8 py-3 bg-white text-navy-900 rounded-full font-bold hover:bg-brand-teal hover:text-white transition-all shadow-lg">
+                    {/* <button className="px-8 py-3 bg-white text-navy-900 rounded-full font-bold hover:bg-brand-teal hover:text-white transition-all shadow-lg">
                         Save This Look
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </section>

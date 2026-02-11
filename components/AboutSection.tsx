@@ -3,8 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { CheckCircle, Award, Factory, Boxes } from "lucide-react";
+import about1 from "@/public/images/about/about-1.jpg";
+import about2 from "@/public/images/about/about-2.jpg";
+import about3 from "@/public/images/about/about-3.jpg";
+import about4 from "@/public/images/about/about-4.jpg";
+import about5 from "@/public/images/about/about-5.jpg";
+import about6 from "@/public/images/about/about-6.jpg";
+import about7 from "@/public/images/about/about-7.jpg";
+import about8 from "@/public/images/about/about-8.jpg";
+import about9 from "@/public/images/about/about-9.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,8 +26,8 @@ const timelineEvents = [
     },
     {
         year: "2023",
-        title: "Manufacturing in Gurgaon",
-        description: "Transitioned to full-scale manufacturing with a state-of-the-art facility in Gurgaon, ensuring superior quality control.",
+        title: "Manufacturing Pan India",
+        description: "Transitioned to full-scale manufacturing with a state-of-the-art facility pan India, ensuring superior quality control.",
         icon: <Factory size={24} />
     },
     {
@@ -29,11 +38,16 @@ const timelineEvents = [
     }
 ];
 
-const specializations = [
-    { title: "Tile Adhesives", desc: "High-polymer engineered bonding.", grid: "col-span-1 md:col-span-2" },
-    { title: "Epoxy Grouts", desc: "Stain-resistant, chemical-proof.", grid: "col-span-1" },
-    { title: "Stone Care", desc: "Preservation & sealing systems.", grid: "col-span-1" },
-    { title: "Wall Putty", desc: "Ultra-smooth finish base.", grid: "col-span-1 md:col-span-2" },
+const aboutImages = [
+    about1.src,
+    about2.src,
+    about3.src,
+    about4.src,
+    about5.src,
+    about6.src,
+    about7.src,
+    about8.src,
+    about9.src
 ];
 
 export default function AboutSection() {
@@ -42,23 +56,18 @@ export default function AboutSection() {
     const blueprintRef = useRef<HTMLDivElement>(null);
     const [currentImage, setCurrentImage] = useState(0);
 
-    const aboutImages = [
-        "/images/about/about-1.jpg",
-        "/images/about/about-2.jpg",
-        "/images/about/about-3.jpg",
-        "/images/about/about-4.jpg"
-    ];
-
     useEffect(() => {
+        setCurrentImage(0);
         const timer = setInterval(() => {
             setCurrentImage((prev) => (prev + 1) % aboutImages.length);
         }, 4000);
         return () => clearInterval(timer);
-    }, []);
+    }, [aboutImages.length]);
 
     // Parallax effect removed for performance
-    // const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
-    // const yHero = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+    const yHero = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+    yHero.set("0%"); // Disable parallax for performance, can be re-enabled if needed
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -106,40 +115,8 @@ export default function AboutSection() {
         <section
             id="about"
             ref={sectionRef}
-            className="relative py-12 bg-[#F5F5F7] overflow-hidden"
+            className="relative pb-12 bg-[#F5F5F7] overflow-hidden"
         >
-            {/* Soft Grain Texture */}
-            <div className="bg-noise mix-blend-overlay"></div>
-
-            {/* Specular Highlight (Chrome Reflection) */}
-            <div className="absolute top-0 right-0 w-150 h-150 bg-radial-gradient from-white to-transparent opacity-60 blur-3xl pointer-events-none transform translate-x-1/2 -translate-y-1/2"></div>
-
-            {/* Platinum Mesh Gradient Background - Simplified for Performance */}
-            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                {/* Professional Metallic Sheen Animation */}
-                <motion.div
-                    className="absolute inset-0 z-0 bg-linear-to-r from-transparent via-white/80 to-transparent -skew-x-12"
-                    initial={{ x: "-100%", opacity: 0 }}
-                    animate={{ x: "200%", opacity: [0, 0.8, 0] }}
-                    transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        repeatDelay: 5,
-                        ease: "easeInOut"
-                    }}
-                    style={{ width: "100%", filter: "blur(30px)" }}
-                />
-
-                {/* Subtle Breathing Glow (Replaces busy blobs) */}
-                <motion.div
-                    className="absolute top-1/4 left-1/4 w-150 h-150 bg-brand-teal/15 rounded-full blur-[100px] mix-blend-multiply"
-                    animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.6, 0.4] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                />
-
-                {/* Clean background - removed static blobs */}
-            </div>
-
             {/* Maximized Width Container */}
             <div className="w-full max-w-450 mx-auto px-4 md:px-8 relative z-10">
 
@@ -147,7 +124,7 @@ export default function AboutSection() {
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <div
                         ref={blueprintRef}
-                        className="absolute inset-0 bg-contain bg-bottom-right bg-no-repeat opacity-[0.08] grayscale mix-blend-multiply"
+                        className="absolute inset-0 bg-contain bg-bottom-right bg-no-repeat opacity-45 grayscale mix-blend-multiply"
                         style={{
                             backgroundImage: "url('/blueprint_bg.svg')",
                             backgroundSize: "80%"
@@ -163,7 +140,7 @@ export default function AboutSection() {
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1, ease: "easeOut" }}
-                        className="pl-4 md:pl-16 lg:pl-24"
+                        className="pl-4"
                     >
                         <h4 className="text-brand-teal text-base font-bold tracking-[0.2em] uppercase mb-8">About Us</h4>
 
@@ -174,7 +151,7 @@ export default function AboutSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            We are <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-700 to-black">ASTOREA</span>
+                            We are <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-700 via-gray-800 to-gray-900">ASTOREA</span>
                         </motion.h1>
 
                         <p className="text-gray-600 text-xl md:text-2xl leading-relaxed mb-12 font-light max-w-2xl">
@@ -184,7 +161,7 @@ export default function AboutSection() {
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="group relative px-10 py-4 bg-[#1a1a1a] text-white text-base font-bold uppercase tracking-widest rounded-full overflow-hidden shadow-2xl"
+                            className="cursor-pointer group relative px-10 py-4 bg-[#1a1a1a] text-white text-base font-bold uppercase tracking-widest rounded-full overflow-hidden shadow-2xl"
                         >
                             <span className="relative z-10 group-hover:text-white transition-colors">Explore Heritage</span>
                             <div className="absolute inset-0 bg-linear-to-r from-gray-700 via-gray-600 to-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -199,32 +176,32 @@ export default function AboutSection() {
                         transition={{ duration: 1, delay: 0.3 }}
                     >
                         {/* Image Placeholder with Chrome Border & Overlay - Taller & Wider */}
-                        <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-white/20 w-full max-w-3xl h-150 md:h-200 mr-0 ml-auto">
+                        <div className="relative overflow-hidden w-full max-w-3xl h-150 md:h-200 mr-0 ml-auto">
                             {/* Slideshow */}
                             <AnimatePresence mode="wait">
                                 <motion.img
                                     key={currentImage}
                                     src={aboutImages[currentImage]}
-                                    initial={{ opacity: 0, scale: 1.1 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 1.5 }}
-                                    className="absolute inset-0 w-full h-full object-cover"
+                                    initial={{ opacity: 0, x: "20%" }}
+                                    animate={{ opacity: 1, x: "0%" }}
+                                    exit={{ opacity: 0, x: "-20%" }}
+                                    transition={{ duration: 0.9, ease: "easeInOut" }}
+                                    className="absolute inset-0 w-full object-contain"
                                     alt="Astorea Factory & Products"
                                 />
                             </AnimatePresence>
 
                             {/* Architectural Tint Overlay */}
-                            <div className="absolute inset-0 bg-linear-to-tr from-[#1a1a1a]/40 to-transparent group-hover:opacity-0 transition-opacity duration-700 pointer-events-none"></div>
+                            {/* <div className="absolute inset-0 bg-linear-to-tr from-[#1a1a1a]/40 to-transparent group-hover:opacity-0 transition-opacity duration-700 pointer-events-none"></div> */}
 
                             {/* Shine Effect */}
                             <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 pointer-events-none"></div>
                         </div>
 
                         {/* ISO Watermark */}
-                        <div className="absolute -bottom-20 -right-20 text-gray-200/50 rotate-[-15deg] pointer-events-none z-0 scale-150">
+                        {/* <div className="absolute -bottom-20 -right-20 text-gray-200/50 rotate-[-15deg] pointer-events-none z-0 scale-150">
                             <Award size={200} strokeWidth={0.5} />
-                        </div>
+                        </div> */}
                     </motion.div>
                 </div>
 
@@ -301,7 +278,7 @@ export default function AboutSection() {
                                     hover:shadow-xl hover:bg-white/50 transition-all duration-500 group will-change-transform
                                     ${index % 2 === 0 ? "md:mr-auto" : "md:ml-auto md:text-left"}
                                 `}>
-                                    <div className="text-4xl font-black text-gray-200 absolute -top-4 -right-4 md:-left-4 z-0 opacity-20 group-hover:opacity-40 transition-opacity">
+                                    <div className="text-4xl font-black text-black/70 absolute -top-12 right-4 md:left-0 z-50 ">
                                         {event.year}
                                     </div>
                                     <h3 className="text-2xl font-bold text-navy-900 mb-2 relative z-10">{event.title}</h3>

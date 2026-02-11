@@ -24,6 +24,27 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
             touchMultiplier: 2,
         });
 
+        const scrollToHash = () => {
+            const hash = window.location.hash;
+            if (!hash) return;
+            const target = document.querySelector<HTMLElement>(hash);
+            if (!target) return;
+            lenis.scrollTo(target, { offset: 0 });
+        };
+
+        const handleAnchorClick = (event: MouseEvent) => {
+            const target = event.target as HTMLElement | null;
+            const anchor = target?.closest<HTMLAnchorElement>('a[href^="#"]');
+            if (!anchor) return;
+            const href = anchor.getAttribute("href");
+            if (!href || href === "#") return;
+            event.preventDefault();
+            const section = document.querySelector<HTMLElement>(href);
+            if (!section) return;
+            lenis.scrollTo(section, { offset: 0 });
+            window.history.pushState(null, "", href);
+        };
+
         // Sync Lenis scroll with GSAP ScrollTrigger
         lenis.on("scroll", ScrollTrigger.update);
 
@@ -35,11 +56,17 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
         // Disable GSAP's lag smoothing to prevent stuttering
         gsap.ticker.lagSmoothing(0);
 
+        document.addEventListener("click", handleAnchorClick);
+        window.addEventListener("hashchange", scrollToHash);
+        scrollToHash();
+
         return () => {
             lenis.destroy();
             gsap.ticker.remove((time) => {
                 lenis.raf(time * 1000);
             });
+            document.removeEventListener("click", handleAnchorClick);
+            window.removeEventListener("hashchange", scrollToHash);
         };
     }, []);
 

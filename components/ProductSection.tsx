@@ -1,12 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, Palette } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { products, shadeNames, type Product } from "@/lib/products";
 
 const ProductCard = ({ product }: { product: Product }) => {
+	const [isDesktop, setIsDesktop] = useState(false);
+
+	useEffect(() => {
+		const mediaQuery = window.matchMedia("(min-width: 768px)");
+		const handleChange = (event: MediaQueryListEvent) => {
+			setIsDesktop(event.matches);
+		};
+
+		setIsDesktop(mediaQuery.matches);
+		mediaQuery.addEventListener("change", handleChange);
+		return () => mediaQuery.removeEventListener("change", handleChange);
+	}, []);
 	return (
 		<motion.div
 			layout
@@ -16,7 +29,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 			viewport={{ once: true }}
 			transition={{ duration: 0.5 }}>
 			{/* Soft Gradient Overlay for Depth */}
-			<div className="absolute inset-0 bg-linear-to-br from-white via-transparent to-gray-50 opacity-50 pointer-events-none"></div>
+			{/* <div className="absolute inset-0 bg-linear-to-br from-white via-transparent to-gray-50 opacity-50 pointer-events-none"></div> */}
 
 			<div className="relative p-8 flex flex-col h-full z-10">
 				{/* Header */}
@@ -25,26 +38,30 @@ const ProductCard = ({ product }: { product: Product }) => {
 						<span className="text-xs font-bold text-brand-teal uppercase tracking-widest">
 							{product.category}
 						</span>
-						<h3 className="text-2xl font-bold text-[#1A1A1A] mt-2">
+						<h3 className="text-xl md:text-2xl font-bold text-[#1A1A1A] mt-2">
 							{product.name}
 						</h3>
 					</div>
-					<Link
+					{/* <Link
 						href={`/products/${product.slug}`}
-						className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center shadow-sm text-gray-400 group-hover:text-brand-teal transition-colors border border-gray-100">
-						<ArrowUpRight size={20} />
-					</Link>
+						className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shadow-sm text-gray-400 group-hover:text-brand-teal transition-colors border border-gray-100">
+						<ArrowUpRight size={16} />
+					</Link> */}
 				</div>
 
 				{/* Product Image */}
 				<motion.div
 					className="w-full aspect-4/3 flex items-center justify-center relative overflow-hidden"
-					animate={{ y: [0, -6, 0] }}
-					transition={{
-						duration: 5,
-						repeat: Infinity,
-						ease: "easeInOut",
-					}}>
+					animate={isDesktop ? { y: [0, -6, 0] } : undefined}
+					transition={
+						isDesktop
+							? {
+								duration: 5,
+								repeat: Infinity,
+								ease: "easeInOut",
+							}
+							: undefined
+					}>
 					<Image
 						src={product.image}
 						alt={product.name}
@@ -122,7 +139,7 @@ export default function ProductSection() {
 						transition={{ duration: 0.8 }}
 						className="text-5xl md:text-7xl font-black text-[#1A1A1A] tracking-tighter mb-6 drop-shadow-sm">
 						ENGINEERED{" "}
-						<span className="text-transparent bg-clip-text bg-linear-to-r from-gray-500 to-gray-800">
+						<span className="text-transparent bg-clip-text bg-linear-to-r from-gray-600 via-gray-700 to-gray-800">
 							EXCELLENCE
 						</span>
 					</motion.h1>
@@ -130,7 +147,7 @@ export default function ProductSection() {
 						initial={{ opacity: 0 }}
 						whileInView={{ opacity: 1 }}
 						transition={{ delay: 0.2, duration: 0.8 }}
-						className="text-gray-600 max-w-2xl mx-auto text-lg font-light">
+						className="text-gray-600 max-w-2xl mx-auto text-lg">
 						Professional-grade adhesives and grouts designed for
 						precision, durability, and aesthetic perfection.
 					</motion.p>
@@ -148,12 +165,13 @@ export default function ProductSection() {
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					className="relative rounded-3xl overflow-hidden bg-linear-to-r from-brand-teal to-blue-600 p-px shadow-2xl">
+					className="relative rounded-3xl overflow-hidden bg-linear-to-r from-brand-teal via-red-500 to-blue-600 p-0.5 shadow-2xl">
+						
 					<div className="bg-[#1A1A1A] rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
 						<div className="absolute inset-0 bg-[url('/blueprint_bg.svg')] opacity-10 bg-repeat bg-center"></div>
 
 						<div className="relative z-10">
-							<h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+							<h2 className="text-2xl md:text-5xl font-bold text-white mb-6">
 								Visualize Your Space
 							</h2>
 							<p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg">
@@ -161,12 +179,18 @@ export default function ProductSection() {
 								Use our interactive visualizer tool to
 								experiment with different combinations.
 							</p>
-							<Link
-								href="#grout-picker"
-								className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transform hover:-translate-y-1 duration-300">
-								<Palette size={20} />
-								Open Grout Visualizer
-							</Link>
+							<div className="flex justify-center">
+								<button
+									type="button"
+									onClick={() => {
+										window.history.pushState(null, "", "#grout-picker");
+										window.dispatchEvent(new HashChangeEvent("hashchange"));
+									}}
+									className="cursor-pointer inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-black rounded-full font-semibold tracking-wide text-center hover:bg-gray-100 transition-all shadow-[0_8px_24px_rgba(255,255,255,0.25)] hover:shadow-[0_12px_30px_rgba(255,255,255,0.4)] hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A]">
+									<Palette size={20} className="shrink-0" />
+									<span className="text-sm md:text-base whitespace-nowrap leading-none">Open Grout Visualizer</span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</motion.div>
