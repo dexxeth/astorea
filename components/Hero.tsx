@@ -99,7 +99,7 @@ export default function Hero() {
                     className="object-cover object-center"
                 />
                 {/* Darker, richer overlay for better contrast */}
-                <div className="absolute inset-0 bg-gradient-to-b from-navy-900/40 via-navy-900/20 to-navy-900/90" />
+                <div className="absolute inset-0 bg-linear-to-b from-navy-900/40 via-navy-900/20 to-navy-900/90" />
                 <div className="absolute inset-0 bg-black/20 mix-blend-multiply" />
             </div>
 
@@ -122,7 +122,7 @@ export default function Hero() {
                     className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter mb-8 leading-[0.9] drop-shadow-lg"
                 >
                     Constructing <br />
-                    <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
+                    <span className="bg-clip-text text-transparent bg-linear-to-b from-white to-white/70">
                         Homes <br className="md:hidden" /> with Pride
                     </span>
                 </h1>

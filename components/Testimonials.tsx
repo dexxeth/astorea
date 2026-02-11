@@ -49,15 +49,15 @@ export default function Testimonials() {
         <section className="py-24 bg-[#0a0a0a] relative overflow-hidden">
             {/* Background Accents */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-brand-teal/5 rounded-full blur-[120px]"></div>
-                <div className="absolute bottom-[20%] left-[10%] w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[100px]"></div>
+                <div className="absolute top-[20%] right-[10%] w-125 h-125 bg-brand-teal/5 rounded-full blur-[120px]"></div>
+                <div className="absolute bottom-[20%] left-[10%] w-100 h-100 bg-blue-600/5 rounded-full blur-[100px]"></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-brand-orange text-sm font-bold tracking-[0.3em] uppercase mb-4">Trusted By Professionals</h2>
                     <h3 className="text-4xl md:text-5xl font-black text-white tracking-tight">
-                        Voices from the <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">Industry</span>
+                        Voices from the <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-200 to-gray-500">Industry</span>
                     </h3>
                 </div>
 
@@ -75,7 +75,7 @@ export default function Testimonials() {
                             {testimonials.map((t) => (
                                 <motion.div
                                     key={t.id}
-                                    className="min-w-[350px] md:min-w-[450px] p-8 md:p-12 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl relative group overflow-hidden"
+                                    className="min-w-87.5 md:min-w-112.5 p-8 md:p-12 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl relative group overflow-hidden"
                                     whileHover={{ y: -5, borderColor: "rgba(255,255,255,0.2)" }}
                                     transition={{ duration: 0.3 }}
                                 >
@@ -101,7 +101,7 @@ export default function Testimonials() {
                                     </p>
 
                                     <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-teal to-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                                        <div className="w-12 h-12 rounded-full bg-linear-to-br from-brand-teal to-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
                                             {t.name.charAt(0)}
                                         </div>
                                         <div>
@@ -111,7 +111,7 @@ export default function Testimonials() {
                                     </div>
 
                                     {/* Subtle Gradient Glow on Hover */}
-                                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%]"></div>
+                                    <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none transform -skew-x-12 -translate-x-full group-hover:translate-x-full"></div>
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -119,9 +119,9 @@ export default function Testimonials() {
 
                     <div className="mt-8 flex justify-center gap-2">
                         <p className="text-gray-600 text-sm flex items-center gap-2">
-                            <span className="w-8 h-[1px] bg-gray-600"></span>
+                            <span className="w-8 h-px bg-gray-600"></span>
                             Drag to explore
-                            <span className="w-8 h-[1px] bg-gray-600"></span>
+                            <span className="w-8 h-px bg-gray-600"></span>
                         </p>
                     </div>
                 </div>

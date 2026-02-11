@@ -43,7 +43,7 @@ export default function GroutPicker() {
                                 >
                                     {/* Faux Texture Overlay */}
                                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
-                                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+                                    <div className="absolute inset-0 bg-linear-to-br from-white/20 to-transparent"></div>
                                 </div>
                             ))}
                         </div>

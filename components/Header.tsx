@@ -20,7 +20,7 @@ export default function Header() {
 
     return (
         <header
-            className="absolute top-0 left-0 w-full z-50 py-8 transition-all duration-300 bg-gradient-to-b from-navy-900/90 to-transparent backdrop-blur-[1px]"
+            className="absolute top-0 left-0 w-full z-50 py-8 transition-all duration-300 bg-linear-to-b from-navy-900/90 to-transparent backdrop-blur-[1px]"
         >
             <div className="container mx-auto px-6 md:px-12 lg:px-20 flex items-center">
                 {/* Logo */}
@@ -50,7 +50,7 @@ export default function Header() {
                             className="relative text-white/90 hover:text-white font-medium text-sm tracking-[0.15em] lowercase group/link transition-colors"
                         >
                             {item.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-teal transition-all duration-300 group-hover/link:w-full"></span>
+                            <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-teal transition-all duration-300 group-hover/link:w-full"></span>
                         </Link>
                     ))}
                 </nav>

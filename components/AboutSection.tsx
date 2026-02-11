@@ -112,13 +112,13 @@ export default function AboutSection() {
             <div className="bg-noise mix-blend-overlay"></div>
 
             {/* Specular Highlight (Chrome Reflection) */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-radial-gradient from-white to-transparent opacity-60 blur-3xl pointer-events-none transform translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute top-0 right-0 w-150 h-150 bg-radial-gradient from-white to-transparent opacity-60 blur-3xl pointer-events-none transform translate-x-1/2 -translate-y-1/2"></div>
 
             {/* Platinum Mesh Gradient Background - Simplified for Performance */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 {/* Professional Metallic Sheen Animation */}
                 <motion.div
-                    className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/80 to-transparent -skew-x-12"
+                    className="absolute inset-0 z-0 bg-linear-to-r from-transparent via-white/80 to-transparent -skew-x-12"
                     initial={{ x: "-100%", opacity: 0 }}
                     animate={{ x: "200%", opacity: [0, 0.8, 0] }}
                     transition={{
@@ -132,7 +132,7 @@ export default function AboutSection() {
 
                 {/* Subtle Breathing Glow (Replaces busy blobs) */}
                 <motion.div
-                    className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-brand-teal/15 rounded-full blur-[100px] mix-blend-multiply"
+                    className="absolute top-1/4 left-1/4 w-150 h-150 bg-brand-teal/15 rounded-full blur-[100px] mix-blend-multiply"
                     animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.6, 0.4] }}
                     transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 />
@@ -141,13 +141,13 @@ export default function AboutSection() {
             </div>
 
             {/* Maximized Width Container */}
-            <div className="w-full max-w-[1800px] mx-auto px-4 md:px-8 relative z-10">
+            <div className="w-full max-w-450 mx-auto px-4 md:px-8 relative z-10">
 
                 {/* Blueprint Background Parallax */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <div
                         ref={blueprintRef}
-                        className="absolute inset-0 bg-contain bg-right-bottom bg-no-repeat opacity-[0.08] grayscale mix-blend-multiply"
+                        className="absolute inset-0 bg-contain bg-bottom-right bg-no-repeat opacity-[0.08] grayscale mix-blend-multiply"
                         style={{
                             backgroundImage: "url('/blueprint_bg.svg')",
                             backgroundSize: "80%"
@@ -174,7 +174,7 @@ export default function AboutSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            We are <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-black">ASTOREA</span>
+                            We are <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-700 to-black">ASTOREA</span>
                         </motion.h1>
 
                         <p className="text-gray-600 text-xl md:text-2xl leading-relaxed mb-12 font-light max-w-2xl">
@@ -187,7 +187,7 @@ export default function AboutSection() {
                             className="group relative px-10 py-4 bg-[#1a1a1a] text-white text-base font-bold uppercase tracking-widest rounded-full overflow-hidden shadow-2xl"
                         >
                             <span className="relative z-10 group-hover:text-white transition-colors">Explore Heritage</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 bg-linear-to-r from-gray-700 via-gray-600 to-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </motion.button>
                     </motion.div>
 
@@ -199,7 +199,7 @@ export default function AboutSection() {
                         transition={{ duration: 1, delay: 0.3 }}
                     >
                         {/* Image Placeholder with Chrome Border & Overlay - Taller & Wider */}
-                        <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-white/20 w-full max-w-3xl h-[600px] md:h-[800px] mr-0 ml-auto">
+                        <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-white/20 w-full max-w-3xl h-150 md:h-200 mr-0 ml-auto">
                             {/* Slideshow */}
                             <AnimatePresence mode="wait">
                                 <motion.img
@@ -215,10 +215,10 @@ export default function AboutSection() {
                             </AnimatePresence>
 
                             {/* Architectural Tint Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-[#1a1a1a]/40 to-transparent group-hover:opacity-0 transition-opacity duration-700 pointer-events-none"></div>
+                            <div className="absolute inset-0 bg-linear-to-tr from-[#1a1a1a]/40 to-transparent group-hover:opacity-0 transition-opacity duration-700 pointer-events-none"></div>
 
                             {/* Shine Effect */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 pointer-events-none"></div>
+                            <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 pointer-events-none"></div>
                         </div>
 
                         {/* ISO Watermark */}
@@ -246,7 +246,7 @@ export default function AboutSection() {
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-full -z-10 pointer-events-none opacity-40">
                         {/* Cool Teal/Grey Orb */}
                         <motion.div
-                            className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-gray-200 via-gray-300 to-transparent rounded-full blur-[80px] mix-blend-multiply"
+                            className="absolute top-0 left-0 w-125 h-125 bg-linear-to-br from-gray-200 via-gray-300 to-transparent rounded-full blur-[80px] mix-blend-multiply"
                             animate={{
                                 y: [0, 100, 0],
                                 x: [0, 50, 0],
@@ -256,7 +256,7 @@ export default function AboutSection() {
                         />
                         {/* Warm Champagne/Gold Orb */}
                         <motion.div
-                            className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-[#e6d5c3] via-[#f5f5f5] to-transparent rounded-full blur-[100px] mix-blend-multiply"
+                            className="absolute bottom-0 right-0 w-150 h-150 bg-linear-to-tl from-[#e6d5c3] via-[#f5f5f5] to-transparent rounded-full blur-[100px] mix-blend-multiply"
                             animate={{
                                 y: [0, -120, 0],
                                 x: [0, -60, 0],
@@ -268,7 +268,7 @@ export default function AboutSection() {
 
                     {/* Vertical Line - Drawing Animation */}
                     <motion.div
-                        className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-brand-teal via-gray-300 to-transparent -translate-x-1/2 md:translate-x-0"
+                        className="absolute left-7 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-brand-teal via-gray-300 to-transparent -translate-x-1/2 md:translate-x-0"
                         initial={{ height: 0 }}
                         whileInView={{ height: "100%" }}
                         viewport={{ once: true }}
@@ -283,7 +283,7 @@ export default function AboutSection() {
                                 initial={{ scale: 0, opacity: 0 }}
                                 whileInView={{ scale: 1, opacity: 1 }}
                                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                                className="w-14 h-14 rounded-full bg-gradient-to-br from-white to-gray-300 shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-white flex items-center justify-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2 text-brand-teal mb-6 md:mb-0"
+                                className="w-14 h-14 rounded-full bg-linear-to-br from-white to-gray-300 shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-white flex items-center justify-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2 text-brand-teal mb-6 md:mb-0"
                             >
                                 {event.icon}
                             </motion.div>
@@ -304,7 +304,7 @@ export default function AboutSection() {
                                     <div className="text-4xl font-black text-gray-200 absolute -top-4 -right-4 md:-left-4 z-0 opacity-20 group-hover:opacity-40 transition-opacity">
                                         {event.year}
                                     </div>
-                                    <h3 className="text-2xl font-bold text-[#1a2a44] mb-2 relative z-10">{event.title}</h3>
+                                    <h3 className="text-2xl font-bold text-navy-900 mb-2 relative z-10">{event.title}</h3>
                                     <p className="text-gray-600 leading-relaxed relative z-10">{event.description}</p>
                                 </div>
                             </motion.div>
