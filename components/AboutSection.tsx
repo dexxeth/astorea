@@ -21,7 +21,7 @@ const timelineEvents = [
     {
         year: "2017",
         title: "Start Trading",
-        description: "Founded by Sunil and Divesh Batra, Astorea began its journey towards redefining construction standards through excellence in trading.",
+        description: "Founded by Sunil and co-founded by Divesh Batra, Astorea began its journey towards redefining construction standards through excellence in trading.",
         icon: <Boxes size={24} />
     },
     {
@@ -115,7 +115,7 @@ export default function AboutSection() {
         <section
             id="about"
             ref={sectionRef}
-            className="relative pb-12 bg-[#F5F5F7] overflow-hidden"
+            className="relative py-12 md:py-16 bg-[#F5F5F7] overflow-hidden"
         >
             {/* Maximized Width Container */}
             <div className="w-full max-w-450 mx-auto px-4 md:px-8 relative z-10">
@@ -133,20 +133,20 @@ export default function AboutSection() {
                 </div>
 
                 {/* About Us Grid Layout - Full Width & Height */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-20 min-h-[80vh]">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 md:mb-20 lg:min-h-[80vh]">
 
                     {/* Left Column: Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1, ease: "easeOut" }}
-                        className="pl-4"
+                        className="px-4 md:px-0 md:pl-4"
                     >
-                        <h4 className="text-brand-teal text-base font-bold tracking-[0.2em] uppercase mb-8">About Us</h4>
+                        <h4 className="text-brand-teal text-center md:text-left text-base font-bold tracking-[0.2em] uppercase mb-6 md:mb-8">About Us</h4>
 
                         {/* GSAP-style Text Reveal */}
                         <motion.h1
-                            className="text-6xl md:text-8xl font-black text-[#1a1a1a] mb-10 leading-none tracking-tight"
+                            className="text-4xl sm:text-5xl md:text-8xl text-center md:text-left font-black text-[#1a1a1a] mb-6 md:mb-10 leading-none tracking-tight"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
@@ -154,8 +154,8 @@ export default function AboutSection() {
                             We are <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-700 via-gray-800 to-gray-900">ASTOREA</span>
                         </motion.h1>
 
-                        <p className="text-gray-600 text-xl md:text-2xl leading-relaxed mb-12 font-light max-w-2xl">
-                            Since 2017, we have been engineering superior bonding solutions, transforming from traders to elite manufacturers in Gurgaon. We bridge the gap between industrial strength and aesthetic perfection.
+                        <p className="text-gray-600 text-center md:text-left text-base sm:text-lg md:text-2xl leading-relaxed mb-8 md:mb-12 font-light max-w-2xl">
+                            Since 2017, we have been engineering superior bonding solutions, transforming from traders to elite manufacturers pan India. We bridge the gap between industrial strength and aesthetic perfection.
                         </p>
 
                         <motion.button
@@ -176,7 +176,7 @@ export default function AboutSection() {
                         transition={{ duration: 1, delay: 0.3 }}
                     >
                         {/* Image Placeholder with Chrome Border & Overlay - Taller & Wider */}
-                        <div className="relative overflow-hidden w-full max-w-3xl h-150 md:h-200 mr-0 ml-auto">
+                        <div className="relative overflow-hidden w-full max-w-3xl h-80 sm:h-105 md:h-150 lg:h-200 mr-0 ml-auto">
                             {/* Slideshow */}
                             <AnimatePresence mode="wait">
                                 <motion.img
@@ -206,7 +206,7 @@ export default function AboutSection() {
                 </div>
 
                 {/* Timeline Header (Smaller) */}
-                <div className="text-center mb-20 relative z-10">
+                <div className="text-center mb-12 md:mb-20 relative z-10">
                     <motion.h2
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -217,7 +217,7 @@ export default function AboutSection() {
                 </div>
 
                 {/* Timeline Section */}
-                <div ref={timelineRef} className="relative max-w-4xl mx-auto mb-32 z-10">
+                <div ref={timelineRef} className="relative max-w-4xl mx-auto mb-20 md:mb-32 z-10">
 
                     {/* Aesthetic Background: Industrial Haze (Drifting Gradients) */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-full -z-10 pointer-events-none opacity-40">
@@ -245,7 +245,7 @@ export default function AboutSection() {
 
                     {/* Vertical Line - Drawing Animation */}
                     <motion.div
-                        className="absolute left-7 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-brand-teal via-gray-300 to-transparent -translate-x-1/2 md:translate-x-0"
+                        className="absolute left-7 md:left-1/2 top-0 bottom-0 w-0.5 bg-brand-teal shadow-2xl to-transparent -translate-x-1/2 md:translate-x-0"
                         initial={{ height: 0 }}
                         whileInView={{ height: "100%" }}
                         viewport={{ once: true }}
@@ -253,7 +253,7 @@ export default function AboutSection() {
                     ></motion.div>
 
                     {timelineEvents.map((event, index) => (
-                        <div key={index} className={`timeline-item flex flex-col md:flex-row items-center mb-20 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                        <div key={index} className={`timeline-item flex flex-col md:flex-row items-center mb-14 md:mb-20 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
 
                             {/* Date Bubble */}
                             <motion.div

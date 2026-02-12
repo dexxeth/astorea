@@ -11,13 +11,12 @@ const tileColors = [
 ];
 
 const groutColors = [
-    { name: "Bright White", value: "#ffffff" },
-    { name: "Silver Grey", value: "#9ca3af" },
-    { name: "Charcoal", value: "#374151" },
-    { name: "Midnight", value: "#000000" },
-    { name: "Brand Pink", value: "#e91e63" },
-    { name: "Brand Teal", value: "#009688" },
-    { name: "Brand Orange", value: "#ff9800" },
+    { name: "White", value: "#ffffff" },
+    { name: "Black", value: "#000000" },
+    { name: "Ivory", value: "#f8f1e4" },
+    { name: "Slate Grey (Light Grey)", value: "#cbd5e1" },
+    { name: "Platinum Grey (Dark Grey)", value: "#4b5563" },
+    { name: "Dark Brown", value: "#4e342e" },
 ];
 
 export default function GroutPicker() {
@@ -25,7 +24,7 @@ export default function GroutPicker() {
     const [selectedGrout, setSelectedGrout] = useState(groutColors[1]);
 
     return (
-        <section className="py-24 bg-zinc-900 text-white" id="grout-picker">
+        <section className="py-24 bg-linear-to-tr from-zinc-800 via-zinc-700 to-zinc-600 text-white" id="grout-picker">
             <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
 
                 {/* Visualizer */}
@@ -59,14 +58,14 @@ export default function GroutPicker() {
                 <div className="order-1 lg:order-2 space-y-12">
                     <div>
                         <h2 className="text-4xl font-bold mb-4">Grout Visualizer</h2>
-                        <p className="text-gray-400 max-w-md">
+                        <p className="text-white max-w-md">
                             The finish details matter. See how our epoxy grout complements different tile aesthetics.
                         </p>
                     </div>
 
                     <div className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-gray-400 mb-3 uppercase tracking-wider">Select Tile</label>
+                            <label className="block text-sm font-medium text-white mb-3 uppercase tracking-wider">Select Tile</label>
                             <div className="flex flex-wrap gap-3">
                                 {tileColors.map((tile) => (
                                     <button
@@ -84,7 +83,7 @@ export default function GroutPicker() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-400 mb-3 uppercase tracking-wider">Select Grout</label>
+                            <label className="block text-sm font-medium text-white mb-3 uppercase tracking-wider">Select Grout</label>
                             <div className="flex flex-wrap gap-3">
                                 {groutColors.map((grout) => (
                                     <button

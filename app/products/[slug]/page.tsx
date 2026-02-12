@@ -49,14 +49,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         </div>
 
                          <div className="mt-6 flex flex-wrap gap-3">
-                            <span className="px-3 py-1 rounded-full bg-gray-50 text-xs font-semibold uppercase tracking-widest text-gray-600 border border-gray-200">
+                            <span className="px-3 py-1 rounded-full bg-brand-teal/10 text-xs font-semibold uppercase tracking-widest text-brand-teal border border-brand-teal/20">
                                 {product.category}
                             </span>
                             <span className="px-3 py-1 rounded-full bg-brand-teal/10 text-xs font-semibold uppercase tracking-widest text-brand-teal border border-brand-teal/20">
                                 {product.code}
                             </span>
                             {product.packaging && (
-                                <span className="px-3 py-1 rounded-full bg-gray-50 text-xs font-semibold uppercase tracking-widest text-gray-600 border border-gray-200">
+                                <span className="px-3 py-1 rounded-full bg-brand-teal/10 text-xs font-semibold uppercase tracking-widest text-brand-teal border border-brand-teal/20">
                                     {product.packaging}
                                 </span>
                             )}
@@ -86,7 +86,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                                 <ul className="space-y-3">
                                     {product.applications.map((application) => (
                                         <li key={application} className="flex items-center gap-3 text-gray-700">
-                                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-100 text-gray-500">
+                                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-teal/15 text-brand-teal">
                                                 <Check size={14} />
                                             </span>
                                             <span>{application}</span>

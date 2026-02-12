@@ -8,6 +8,7 @@ import {
 	MapPin,
 	Phone,
 	Mail,
+	Clock,
 } from "lucide-react";
 
 export default function Footer() {
@@ -60,19 +61,23 @@ export default function Footer() {
 									Haryana 122015, India
 								</span>
 							</li>
-							<li className="flex items-center gap-3">
+							{/* <li className="flex items-center gap-3">
 								<Phone
 									size={18}
 									className="text-brand-orange shrink-0"
 								/>
 								<span>+91 92539 01000</span>
-							</li>
+							</li> */}
 							<li className="flex items-center gap-3">
 								<Mail
 									size={18}
 									className="text-brand-orange shrink-0"
 								/>
 								<span>astoreaofficial@gmail.com</span>
+							</li>
+							<li className="flex items-center gap-3">
+								<Clock className="text-brand-orange" size={18} />
+								<span>Mon-Sat, 10:00 AM - 7:00 PM</span>
 							</li>
 						</ul>
 					</div>
@@ -101,14 +106,28 @@ export default function Footer() {
 								<Link
 									href="/products/c2t-301"
 									className="hover:text-black hover:translate-x-1 inline-block transition-all">
-									Astorea Fix C2T-301
+									Astorea Fix C2T-301 - Grey
+								</Link>
+							</li>
+							<li>
+								<Link
+									href="/products/c2t-301"
+									className="hover:text-black hover:translate-x-1 inline-block transition-all">
+									Astorea Fix C2T-401 - White
 								</Link>
 							</li>
 							<li>
 								<Link
 									href="/products/c2te-501"
 									className="hover:text-black hover:translate-x-1 inline-block transition-all">
-									Astorea Fix C2TE-501
+									Astorea Fix C2TE-501 - Grey
+								</Link>
+							</li>
+							<li>
+								<Link
+									href="/products/c2te-501"
+									className="hover:text-black hover:translate-x-1 inline-block transition-all">
+									Astorea Fix C2TE-601 - White
 								</Link>
 							</li>
 							<li>

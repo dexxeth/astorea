@@ -37,7 +37,7 @@ export const products: Product[] = [
         image: "/images/products/1.png",
         summary: "Type 1 adhesive for floor-only applications.",
         description: "Type 1 (C1-001) adhesive formulated for floor installations where reliable bonding is required.",
-        specs: ["Type 1 (C1)", "Floor Only", "Pink Bag"],
+        specs: ["Type 1 (C1)", "Floor Only"],
         applications: ["Floor tiles"]
     },
     {
@@ -55,26 +55,26 @@ export const products: Product[] = [
     {
         id: 3,
         slug: "c2t-301",
-        name: "Astorea Fix C2T-301",
+        name: "Astorea Fix C2T-301/401",
         category: "Adhesives",
         code: "C2T-301",
         image: "/images/products/3.png",
         summary: "Type 2 adhesive for floor and wall up to 10 ft.",
         description: "Type 2 (C2T-301) adhesive suitable for floor and wall tiles up to 2x4, with wall heights up to 10 ft.",
-        specs: ["Type 2 (C2T)", "Floor + Wall", "2x4 Tile Size"],
+        specs: ["Type 2 (C2T)", "Floor + Wall", "2 Shade Options"],
         applications: ["Floor tiles up to 2x4", "Wall tiles up to 10 ft height"],
         shades: ["#808080", "#FFFFFF"]
     },
     {
         id: 4,
         slug: "c2te-501",
-        name: "Astorea Fix C2TE-501",
+        name: "Astorea Fix C2TE-501/601",
         category: "Adhesives",
         code: "C2TE-501",
         image: "/images/products/4.png",
         summary: "Type 3 exterior adhesive for floor and wall up to 30 ft.",
         description: "Type 3 (C2TE-501) adhesive for exterior floor and wall tiles up to 2x4, with wall heights up to 30 ft.",
-        specs: ["Type 3 (C2TE)", "Exterior Use", "2x4 Tile Size"],
+        specs: ["Type 3 (C2TE)", "Exterior Use", "2 Shade Options"],
         applications: ["Exterior floor tiles up to 2x4", "Exterior wall tiles up to 30 ft height"],
         shades: ["#808080", "#FFFFFF"]
     },
@@ -85,12 +85,12 @@ export const products: Product[] = [
         category: "Grouts",
         code: "Grout 101",
         image: "/images/products/5.png",
-        summary: "Grout 101 available in 1 kg packs.",
+        summary: "For filling joints or gaps between tiles up to 3 mm.",
         description: "Grout 101 is offered in 1 kg packaging with a full shade range for design flexibility.",
-        specs: ["1 kg Pack", "8 Shade Options"],
-        applications: ["Tile joints"],
+        specs: ["Excellent bonding", "High durability", "1 kg Pack", "8 Shade Options"],
+        applications: ["Tile joints up to 3 mm"],
         packaging: "1 kg",
-        shades: ["#000000", "#FFFFFF", "#FFFFF0", "#A52A2A", "#708090", "#E5E4E2", "#FFD700", "#C0C0C0"]
+        shades: ["#000000", "#FFFFFF", "#FFFFF0", "#A52A2A", "#708090", "#E5E4E2"]
     },
     {
         id: 6,
@@ -99,10 +99,10 @@ export const products: Product[] = [
         category: "Grouts",
         code: "Epoxy 5 kg",
         image: "/images/products/6.png",
-        summary: "Two-component epoxy grout in 5 kg packs.",
+        summary: "For filling joints or gaps between tiles up to 12 mm.",
         description: "Two-component epoxy grout system supplied in 5 kg packaging.",
-        specs: ["2 Component", "5 kg Pack"],
-        applications: ["Tile joints"],
+        specs: ["2 Component", "5 kg Pack" ,"Water Resistant", "Chemical Resistant", "Antibacterial & Antifungal"],
+        applications: ["Tile joints up to 12 mm"],
         packaging: "5 kg",
         shades: ["#000000", "#FFFFFF", "#FFFFF0", "#A52A2A", "#708090", "#E5E4E2", "#FFD700", "#C0C0C0"]
     }
