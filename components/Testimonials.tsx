@@ -69,7 +69,7 @@ export default function Testimonials() {
                             {loopTestimonials.map((t, index) => (
                                 <motion.div
                                     key={`${t.id}-${index}`}
-                                    className="min-w-[78vw] md:min-w-112.5 p-6 md:p-12 rounded-3xl bg-linear-to-r from-gray-500 via-gray-600 to-gray-700 border border-white/10 relative group overflow-hidden"
+                                    className="min-w-[78vw] md:min-w-112.5 p-6 md:p-12 rounded-3xl bg-linear-to-tr from-zinc-800 via-zinc-700 to-zinc-600 border border-white/10 relative group overflow-hidden"
                                 >
                                     {/* Quote Icon */}
                                     <div className="text-brand-orange mb-6">

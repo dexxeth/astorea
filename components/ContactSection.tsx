@@ -45,10 +45,10 @@ export default function ContactSection() {
 									122015, India
 								</span>
 							</div>
-							<div className="flex items-center gap-4">
+							{/* <div className="flex items-center gap-4">
 								<Phone className="text-brand-orange" size={18} />
 								<span>+91 92539 01000</span>
-							</div>
+							</div> */}
 							<div className="flex items-center gap-4">
 								<Mail className="text-brand-orange" size={18} />
 								<span>astoreaofficial@gmail.com</span>
@@ -71,13 +71,38 @@ export default function ContactSection() {
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 								<div>
 									<label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
-										Full Name
+										First Name
 									</label>
 									<input
 										type="text"
-										name="name"
+										name="firstName"
 										required
-										placeholder="Your name"
+										placeholder="Your First Name"
+										className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-teal/40"
+									/>
+								</div>
+								<div>
+									<label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+										Last Name									</label>
+									<input
+										type="text"
+										name="lastName"
+										required
+										placeholder="Your Last Name"
+										className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-teal/40"
+									/>
+								</div>
+							</div>
+
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+								<div>
+									<label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+										Phone
+									</label>
+									<input
+										type="tel"
+										name="phone"
+										placeholder="+91 9876543210"
 										className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-teal/40"
 									/>
 								</div>
@@ -92,34 +117,6 @@ export default function ContactSection() {
 										placeholder="name@email.com"
 										className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-teal/40"
 									/>
-								</div>
-							</div>
-
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-								<div>
-									<label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
-										Phone
-									</label>
-									<input
-										type="tel"
-										name="phone"
-										placeholder="+91"
-										className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-teal/40"
-									/>
-								</div>
-								<div>
-									<label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
-										Project Type
-									</label>
-									<select
-										name="projectType"
-										className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-teal/40"
-									>
-										<option>Tile Installation</option>
-										<option>Grout & Finish</option>
-										<option>Stone Care</option>
-										<option>Industrial Project</option>
-									</select>
 								</div>
 							</div>
 
