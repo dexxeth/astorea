@@ -176,7 +176,7 @@ export default function AboutSection() {
                         transition={{ duration: 1, delay: 0.3 }}
                     >
                         {/* Image Placeholder with Chrome Border & Overlay - Taller & Wider */}
-                        <div className="relative overflow-hidden w-full max-w-3xl h-80 sm:h-105 md:h-150 lg:h-200 mr-0 ml-auto">
+                        <div className="relative overflow-hidden w-full max-w-3xl h-auto sm:h-105 md:h-150 lg:h-200 mr-0 ml-auto">
                             {/* Slideshow */}
                             <AnimatePresence mode="wait">
                                 <motion.img
@@ -186,7 +186,7 @@ export default function AboutSection() {
                                     animate={{ opacity: 1, x: "0%" }}
                                     exit={{ opacity: 0, x: "-20%" }}
                                     transition={{ duration: 0.9, ease: "easeInOut" }}
-                                    className="absolute inset-0 w-full object-contain"
+                                    className="relative block w-full h-auto object-contain"
                                     alt="Astorea Factory & Products"
                                 />
                             </AnimatePresence>

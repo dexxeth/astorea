@@ -1,9 +1,55 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Clock, ArrowUpRight } from "lucide-react";
 
 export default function ContactSection() {
+	const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+		"idle"
+	);
+	const [errorMessage, setErrorMessage] = useState("");
+
+	const handleSubmit = async (
+		event: React.FormEvent<HTMLFormElement>
+	) => {
+		event.preventDefault();
+		setStatus("sending");
+		setErrorMessage("");
+
+		const form = event.currentTarget;
+		const formData = new FormData(form);
+		const payload = {
+			firstName: String(formData.get("firstName") ?? "").trim(),
+			lastName: String(formData.get("lastName") ?? "").trim(),
+			phone: String(formData.get("phone") ?? "").trim(),
+			email: String(formData.get("email") ?? "").trim(),
+			message: String(formData.get("message") ?? "").trim(),
+			company: String(formData.get("company") ?? "").trim()
+		};
+
+		try {
+			const response = await fetch("/api/contact", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(payload)
+			});
+
+			if (!response.ok) {
+				const data = await response.json().catch(() => null);
+				setErrorMessage(data?.error ?? "Something went wrong.");
+				setStatus("error");
+				return;
+			}
+
+			setStatus("sent");
+			form.reset();
+		} catch {
+			setErrorMessage("Unable to send right now.");
+			setStatus("error");
+		}
+	};
+
 	return (
 		<section
 			id="contact"
@@ -67,7 +113,7 @@ export default function ContactSection() {
 						transition={{ duration: 0.7, delay: 0.1 }}
 						className="bg-white/70 backdrop-blur-md border border-white/70 rounded-3xl shadow-xl p-8 md:p-10"
 					>
-						<form className="space-y-6">
+						<form className="space-y-6" onSubmit={handleSubmit}>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 								<div>
 									<label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
@@ -92,6 +138,19 @@ export default function ContactSection() {
 										className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-teal/40"
 									/>
 								</div>
+							</div>
+
+							<div className="absolute -left-2499.75 top-0 h-0 w-0 overflow-hidden">
+								<label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+									Company
+								</label>
+								<input
+									type="text"
+									name="company"
+									autoComplete="off"
+									tabIndex={-1}
+									className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800"
+								/>
 							</div>
 
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -135,11 +194,23 @@ export default function ContactSection() {
 
 							<button
 								type="submit"
-								className="group w-full inline-flex items-center justify-center gap-3 rounded-full bg-[#1A1A1A] px-8 py-4 text-white font-bold tracking-widest uppercase text-sm shadow-2xl hover:shadow-xl transition-all"
+								disabled={status === "sending"}
+								className="group w-full cursor-pointer inline-flex items-center justify-center gap-3 rounded-full bg-[#1A1A1A] px-8 py-4 text-white font-bold tracking-widest uppercase text-sm shadow-2xl hover:shadow-xl transition-all disabled:cursor-not-allowed disabled:opacity-70"
 							>
-								Send Inquiry
+								{status === "sending" ? "Sending..." : "Send Inquiry"}
 								<ArrowUpRight size={18} className="transition-transform group-hover:translate-x-1" />
 							</button>
+
+							{status === "sent" && (
+								<p className="text-sm text-green-700" role="status">
+									Thanks, we will be in touch shortly.
+								</p>
+							)}
+							{status === "error" && (
+								<p className="text-sm text-red-600" role="alert">
+									{errorMessage}
+								</p>
+							)}
 						</form>
 					</motion.div>
 				</div>
